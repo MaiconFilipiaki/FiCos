@@ -1,0 +1,9 @@
+[default]
+RUN_DEBUG='False'
+RUN_USE_RELOADER='False'
+
+[development]
+RUN_DEBUG='True'
+RUN_USE_RELOADER='True'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = false
