@@ -9,6 +9,10 @@ dynaconf = "*"
 flask-sqlalchemy = "*"
 flask-restful = "*"
 sqlalchemy-serializer = "*"
+flasgger = "*"
+marshmallow = "*"
+apispec = "*"
+setuptools = "*"
 
 [dev-packages]
 
