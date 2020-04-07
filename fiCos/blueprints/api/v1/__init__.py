@@ -1,13 +1,15 @@
 from flask import Blueprint
-from flask_restful import Api 
+from flask_restful import Api
 
+from .user.Resources import UserResource
 from .login.Resources import LoginResource
 
-urlPrefix = '/api/v1'
-bpLogin = Blueprint('login', __name__, url_prefix=urlPrefix)
+api_bp = Blueprint('api', __name__, url_prefix='/api/v1')
+api = Api(api_bp)
 
-api = Api(bpLogin)
+api.add_resource(UserResource, '/user')
+api.add_resource(LoginResource, '/auth')
 
 def init_app(app):
-    api.add_resource(LoginResource, '/auth')
-    app.register_blueprint(bpLogin)
+    app.register_blueprint(api_bp)
+
