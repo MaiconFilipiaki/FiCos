@@ -1,3 +1,5 @@
+from flask_migrate import Migrate
+
 from fiCos.ext.database import db
 
 from fiCos.models.User import User
@@ -19,3 +21,11 @@ def init_app(app):
         db.session.bulk_save_objects(data)
         db.session.commit()
         return User.query.all()
+
+    @app.shell_context_processor
+    def shell_context_processor():
+        return dict(
+            app=app,
+            db=db,
+            User=User,
+        )

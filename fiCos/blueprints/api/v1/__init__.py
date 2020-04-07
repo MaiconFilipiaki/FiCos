@@ -1,9 +1,10 @@
 from flask import Blueprint
 from flask_restful import Api 
 
-from .Resources import LoginResource
+from .login.Resources import LoginResource
 
-bpLogin = Blueprint('login', __name__, url_prefix='/api/v1')
+urlPrefix = '/api/v1'
+bpLogin = Blueprint('login', __name__, url_prefix=urlPrefix)
 
 api = Api(bpLogin)
 
