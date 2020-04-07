@@ -1,6 +1,7 @@
 [default]
 RUN_DEBUG='False'
 RUN_USE_RELOADER='False'
+SECRET_KEY='ThisIsSecret'
 
 [development]
 RUN_DEBUG='True'
