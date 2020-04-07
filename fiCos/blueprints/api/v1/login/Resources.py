@@ -1,13 +1,6 @@
-import os
 from flask import jsonify
 from flask_restful import Resource
-from flasgger import swag_from, Schema, fields
-
-from fiCos.models.User import User
-from fiCos.ext.database import db
-
-class Palette(Schema):
-    pallete_name = fields.Str()
+from flasgger import swag_from
 
 class LoginResource(Resource):
 
