@@ -13,6 +13,10 @@ flasgger = "*"
 marshmallow = "*"
 apispec = "*"
 setuptools = "*"
+pyjwt = "*"
+flask-migrate = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
 
 [dev-packages]
 
