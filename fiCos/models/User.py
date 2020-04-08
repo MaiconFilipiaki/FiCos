@@ -6,7 +6,7 @@ from sqlalchemy_serializer import SerializerMixin
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    usename = db.Column(db.String(84), nullable=False)
+    username = db.Column(db.String(84), nullable=False)
     email = db.Column(db.String(84), nullable=False, unique=True)
     password = db.Column(db.String(128), nullable=False)
 
@@ -23,4 +23,8 @@ class User(db.Model, SerializerMixin):
 
 class UserSchema(ma.Schema):
     class Meta:
-        fields = 'id', 'username', 'email', 'password'
+        fields = 'id', 'username', 'email'
+
+
+user_share_schema = UserSchema()
+users_share_schema = UserSchema(many=True)

@@ -1,0 +1,25 @@
+This routes referente the part of login. For access any route out this context, you need to tie a token and e add the token in header in request with name of Authorization
+---
+tags:
+  - User
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      id: rec_username
+      properties:
+        username:
+          type: string
+          description: The name of the user
+          default: 'steve-harris'
+responses:
+  200:
+    description: A single user item (um único usuário)
+    schema:
+      id: rec_username
+      properties:
+        username:
+          type: string
+          description: The name of the user
+          default: 'steve-harris'
