@@ -1,4 +1,4 @@
-This routes referente the part of login. For access any route out this context, you need to tie a token and e add the token in header in request with name of Authorization
+This route serve for create of user
 ---
 tags:
   - User
@@ -7,19 +7,46 @@ parameters:
     name: body
     required: true
     schema:
-      id: rec_username
+      id: create_user_body
       properties:
         username:
           type: string
           description: The name of the user
-          default: 'steve-harris'
+        email:
+          type: string
+          description: The email of the user, of which must be unique
+        password:
+          type: string
+          description: The password of the user
+        
 responses:
   200:
-    description: A single user item (um único usuário)
+    description: Created user with success
     schema:
-      id: rec_username
+      id: create_user_response
       properties:
         username:
           type: string
           description: The name of the user
-          default: 'steve-harris'
+        id:
+          type: string
+          description: The id of the user
+        email:
+          type: string
+          description: The name of the user
+  400:
+    description: Trying to create a user with incorrect data 
+    schema:
+      id: create_user_response_error_email
+      properties:
+        error:
+          type: string
+          description: Information of error
+  500:
+    description: Internal error 
+    schema:
+      id: create_user_response_error_internal
+      properties:
+        error:
+          type: string
+          description: Information of error
