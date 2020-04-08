@@ -7,19 +7,36 @@ parameters:
     name: body
     required: true
     schema:
-      id: rec_username
+      id: login_para
       properties:
-        username:
+        email:
           type: string
-          description: The name of the user
-          default: 'steve-harris'
+          description: The email of the user
+        password:
+          type: string
+          description: The password of the user
 responses:
   200:
-    description: A single user item (um único usuário)
+    description: Login successful
     schema:
-      id: rec_username
+      id: login_success
       properties:
-        username:
+        token:
           type: string
-          description: The name of the user
-          default: 'steve-harris'
+          description: Token generated for the user
+  403:
+    description: Credentials incorrect
+    schema:
+      id: login_incorrect
+      properties:
+        error:
+          type: string
+          description: Message about error
+  500:
+    description: Internal error 
+    schema:
+      id: internal_erro_login
+      properties:
+        error:
+          type: string
+          description: Message about error
