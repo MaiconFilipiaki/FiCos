@@ -6,7 +6,7 @@ from fiCos.ext.database import db
 from fiCos.models.User import User, user_share_schema, users_share_schema
 class UserResource(Resource):
 
-    @swag_from('static/username_specs.yml', methods=['POST'])
+    @swag_from('static/post.yml', methods=['POST'])
     def post(self):
         username = request.json.get('username')
         email = request.json.get('email')

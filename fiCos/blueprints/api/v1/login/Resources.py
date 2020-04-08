@@ -8,7 +8,7 @@ import jwt
 from fiCos.models.User import User
 class LoginResource(Resource):
 
-    @swag_from('static/username_specs.yml', methods=['POST'])
+    @swag_from('static/post.yml', methods=['POST'])
     def post(self):
         email = request.json.get('email')
         password = request.json.get('password')
