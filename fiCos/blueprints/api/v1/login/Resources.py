@@ -6,6 +6,8 @@ import datetime
 import jwt
 
 from fiCos.models.User import User
+
+
 class LoginResource(Resource):
 
     @swag_from('static/post.yml', methods=['POST'])
@@ -17,7 +19,7 @@ class LoginResource(Resource):
 
         if not user.verify_password(password):
             return jsonify({
-                "error":"credentials are not correct"
+                "error": "credentials are not correct"
             }), 403
 
         payload = {
@@ -26,6 +28,4 @@ class LoginResource(Resource):
         }
         token = jwt.encode(payload, current_app.config.get('SECRET_KEY'))
 
-        return jsonify(
-            {"token": token.decode('utf-8') }
-        )
+        return jsonify({"token": token.decode('utf-8')})

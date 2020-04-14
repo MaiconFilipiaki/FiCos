@@ -1,9 +1,13 @@
-from fiCos.ext.database import db
-from fiCos.ext.migration import ma
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy_serializer import SerializerMixin
 
+from fiCos.ext.database import db
+from fiCos.ext.migration import ma
+
+
 class User(db.Model, SerializerMixin):
+    """ this user reference model """
+
     __tablename__ = 'users'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     username = db.Column(db.String(84), nullable=False)
@@ -20,6 +24,7 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'<User : {self.username} >'
+
 
 class UserSchema(ma.Schema):
     class Meta:

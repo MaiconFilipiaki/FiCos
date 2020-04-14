@@ -12,6 +12,6 @@ api.add_resource(UserResource, '/user')
 api.add_resource(LoginResource, '/auth')
 api.add_resource(CatalogResource, '/catalog')
 
+
 def init_app(app):
     app.register_blueprint(api_bp)
-

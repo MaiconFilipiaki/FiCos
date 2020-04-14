@@ -8,6 +8,7 @@ from fiCos.ext import migration
 
 from fiCos.blueprints.api import v1
 
+
 def create_app():
     app = Flask(__name__)
     configuration.init_app(app)
@@ -17,4 +18,3 @@ def create_app():
     v1.init_app(app)
     presentation.init_app(app)
     return app
-
