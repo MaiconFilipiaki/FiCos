@@ -3,7 +3,8 @@ from flask_restful import Resource
 from flasgger import swag_from
 
 from fiCos.ext.database import db
-from fiCos.models.User import User, user_share_schema
+from fiCos.models.models import User
+from fiCos.models.schemas import user_share_schema
 
 
 class UserResource(Resource):
@@ -27,9 +28,10 @@ class UserResource(Resource):
             )
 
         user = User(
-            username,
-            email,
-            password
+            username=username,
+            email=email,
+            password=password,
+            prompt_deliverys=[]
         )
 
         db.session.add(user)

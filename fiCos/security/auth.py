@@ -2,7 +2,7 @@ from functools import wraps
 from flask import request, jsonify, current_app, make_response
 import jwt
 
-from fiCos.models.User import User
+from fiCos.models.models import User
 
 
 def jwt_required(f):

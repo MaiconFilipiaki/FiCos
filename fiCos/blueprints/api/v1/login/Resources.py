@@ -5,7 +5,7 @@ from flasgger import swag_from
 import datetime
 import jwt
 
-from fiCos.models.User import User
+from fiCos.models.models import User
 
 
 class LoginResource(Resource):

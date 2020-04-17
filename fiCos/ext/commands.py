@@ -2,7 +2,7 @@ from flask_migrate import Migrate
 
 from fiCos.ext.database import db
 
-from fiCos.models.User import User
+from fiCos.models.models import User
 
 def init_app(app):
 
