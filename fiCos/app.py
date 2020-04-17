@@ -7,6 +7,7 @@ from fiCos.ext import presentation
 from fiCos.ext import migration
 
 from fiCos.blueprints.api import v1
+from fiCos.blueprints import login_social
 
 
 def create_app():
@@ -16,5 +17,6 @@ def create_app():
     migration.init_app(app)
     commands.init_app(app)
     v1.init_app(app)
+    login_social.init_app(app)
     presentation.init_app(app)
     return app

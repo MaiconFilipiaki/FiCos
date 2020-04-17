@@ -17,6 +17,7 @@ pyjwt = "*"
 flask-migrate = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
+flask-dance = {extras = ["sqla"],version = "*"}
 
 [dev-packages]
 flake8 = "*"
