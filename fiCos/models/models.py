@@ -14,6 +14,7 @@ class User(db.Model, SerializerMixin):
     password = db.Column(db.String(128), nullable=False)
     prompt_deliverys = db.relationship(
         'PromptDelivery',
+        cascade="all,delete",
         backref='prompt_delivery',
         lazy='dynamic'
     )
@@ -39,7 +40,12 @@ class PromptDelivery(db.Model):
         db.Integer,
         db.ForeignKey('users.id')
     )
-    items = db.relationship('Item', backref='prompt_delivery', lazy='dynamic')
+    items = db.relationship(
+        'Item',
+        backref='prompt_delivery',
+        cascade="all,delete",
+        lazy='dynamic'
+    )
 
     def __repr__(self):
         return f'<PromptDelivery: {self.name}>'

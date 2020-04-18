@@ -3,7 +3,7 @@ from fiCos.ext.migration import ma
 
 class UserSchema(ma.Schema):
     class Meta:
-        fields = 'id', 'username', 'email'
+        fields = 'username', 'email'
 
 
 user_share_schema = UserSchema()
@@ -11,14 +11,14 @@ user_share_schema = UserSchema()
 
 class ItemSchema(ma.Schema):
     class Meta:
-        fields = 'description', 'price'
+        fields = 'id', 'description', 'price'
 
 
 class PromptDeliverySchema(ma.Schema):
     items = ma.Nested(ItemSchema, many=True)
 
     class Meta:
-        fields = 'name', 'items'
+        fields = 'id', 'name', 'items'
 
 
-prompt_delivery_share_schema = PromptDeliverySchema(many=True)
+prompt_delivery_share_schema = PromptDeliverySchema()
