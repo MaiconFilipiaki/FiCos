@@ -14,6 +14,9 @@ class ItemSchema(ma.Schema):
         fields = 'id', 'description', 'price'
 
 
+item_share_schema = ItemSchema()
+
+
 class PromptDeliverySchema(ma.Schema):
     items = ma.Nested(ItemSchema, many=True)
 
