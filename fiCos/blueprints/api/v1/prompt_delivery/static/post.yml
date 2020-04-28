@@ -1,0 +1,57 @@
+This route serve for create of prompt delivery
+---
+tags:
+  - Prompt Delivery
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      id: create_prompt_delivery
+      properties:
+        name:
+          type: string
+          description: The name of prompt deliver
+
+definitions:
+  Item:
+    type: object
+    properties:
+      description:
+        type: string
+      price:
+        type: string
+
+responses:
+  200:
+    description: Created prompt delivery with success
+    schema:
+      id: create_prompt_delivery_200
+      properties:
+        id:
+          type: string
+          description: The id of the user
+        items:
+          type: array
+          description: The list of the prompt delivery
+          items:
+            $ref: '#/definitions/Item'
+        name:
+          type: string
+          description: The name of the user
+  400:
+    description: Trying to create a prompt delivery with incorrect data 
+    schema:
+      id: create_prompt_delivery_response_error_internal_1
+      properties:
+        error:
+          type: string
+          description: Information of error
+  500:
+    description: Internal error 
+    schema:
+      id: create_prompt_delivery_response_error_internal_2
+      properties:
+        error:
+          type: string
+          description: Information of error

@@ -1,5 +1,6 @@
 from flask import jsonify, request, make_response
 from flask_restful import Resource
+from flasgger import swag_from
 
 from fiCos.security.auth import jwt_required
 
@@ -11,6 +12,7 @@ from fiCos.models.schemas import prompt_delivery_share_schema
 class PromptDeliveryResource(Resource):
 
     @jwt_required
+    @swag_from('static/post.yml', methods=['POST'])
     def post(self, current_user):
         name = request.json.get('name')
         items = request.json.get('items')
@@ -96,6 +98,7 @@ class PromptDeliveryResource(Resource):
         return jsonify({"msg": "Prompt delivery deleted with success"})
 
     @jwt_required
+    @swag_from('static/get.yml', methods=['GET'])
     def get(self, current_user):
         id = request.args.get('id')
         if id is None:
