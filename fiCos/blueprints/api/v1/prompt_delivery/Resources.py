@@ -6,7 +6,7 @@ from fiCos.security.auth import jwt_required
 
 from fiCos.ext.database import db
 from fiCos.models.models import PromptDelivery
-from fiCos.models.schemas import prompt_delivery_share_schema
+from fiCos.models.schemas import prompt_delivery_share_schema, prompt_delivery_share_schemas
 
 
 class PromptDeliveryResource(Resource):
@@ -19,10 +19,6 @@ class PromptDeliveryResource(Resource):
         if name is None:
             return jsonify({
                 "error": "You need to fill field name"
-            }), 400
-        if items is None or len(items) == 0:
-            return jsonify({
-                "error": "You need to add some item in prompt delivery"
             }), 400
         # items_for_save = []
         # for item in items:
@@ -59,7 +55,10 @@ class PromptDeliveryResource(Resource):
     def put(self, current_user):
         id = request.args.get('id')
         name = request.json.get('name')
-        if name is None or id is None:
+        latitude = request.json.get('latitude')
+        longitude = request.json.get('longitude')
+        reach = request.json.get('reach')
+        if name is None or id is None or latitude is None or longitude is None or reach is None:
             return make_response(
                 jsonify({
                     "error": "You need to fill all field"
@@ -73,6 +72,9 @@ class PromptDeliveryResource(Resource):
                 }), 404
             )
         result.name = name
+        result.latitude = latitude
+        result.longitude = longitude
+        result.reach = reach
         db.session.commit()
         result = prompt_delivery_share_schema.dump(
             PromptDelivery.query.filter_by(id=id).first()
@@ -102,10 +104,10 @@ class PromptDeliveryResource(Resource):
     def get(self, current_user):
         id = request.args.get('id')
         if id is None:
-            return make_response(
-                jsonify({'error': 'You need to inform an id'}),
-                400
+            result = prompt_delivery_share_schemas.dump(
+                PromptDelivery.query.filter_by(user_id=current_user.id)
             )
+            return jsonify(result)
         result = prompt_delivery_share_schema.dump(
             PromptDelivery.query.filter_by(id=id).first()
         )

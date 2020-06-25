@@ -2,6 +2,7 @@
 RUN_DEBUG='False'
 RUN_USE_RELOADER='False'
 SECRET_KEY='ThisIsSecret'
+UPLOAD_FOLDER='static/img'
 
 [development]
 RUN_DEBUG='True'

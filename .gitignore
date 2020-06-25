@@ -1,4 +1,6 @@
 .vscode
 .ideia
+.ideia/
 .env
 /migrations
+/fiCos/static/img/

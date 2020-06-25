@@ -5,6 +5,7 @@ from flasgger import swag_from
 from fiCos.ext.database import db
 from fiCos.models.models import User
 from fiCos.models.schemas import user_share_schema
+from fiCos.security.auth import jwt_required
 
 
 class UserResource(Resource):
@@ -40,3 +41,10 @@ class UserResource(Resource):
             User.query.filter_by(email=email).first()
         )
         return jsonify(result)
+
+    @jwt_required
+    def get(self, current_user):
+        userJson = user_share_schema.dump(
+            current_user
+        )
+        return jsonify({"user": userJson});
