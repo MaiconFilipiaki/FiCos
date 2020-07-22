@@ -4,3 +4,4 @@
 .env
 /migrations
 /fiCos/static/img/
+.docker

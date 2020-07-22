@@ -5,7 +5,7 @@ from fiCos.ext.database import db
 from fiCos.security.auth import jwt_required
 
 from fiCos.models.models import Item, PromptDelivery
-from fiCos.models.schemas import item_share_schema
+from fiCos.models.schemas import item_share_schema, item_share_schemas
 
 
 class ItemsResources(Resource):
@@ -43,8 +43,7 @@ class ItemsResources(Resource):
             201
         )
 
-    @jwt_required
-    def get(self, current_user, id_prompt_delivery_id):
+    def get(self, id_prompt_delivery_id):
         id = request.args.get('id')
         if id is None:
             return make_response(

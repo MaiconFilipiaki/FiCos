@@ -36,8 +36,8 @@ class PromptDelivery(db.Model):
     __tablename__ = 'prompt_delivery'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(150), nullable=False)
-    latitude = db.Column(db.Numeric(precision=8, asdecimal=False, decimal_return_scale=None))
-    longitude = db.Column(db.Numeric(precision=8, asdecimal=False, decimal_return_scale=None))
+    latitude = db.Column(db.Numeric(10,6))
+    longitude = db.Column(db.Numeric(10,6))
     reach = db.Column(db.Numeric(precision=8, asdecimal=False, decimal_return_scale=None))
     user_id = db.Column(
         db.Integer,
@@ -57,9 +57,24 @@ class PromptDelivery(db.Model):
 class Item(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     description = db.Column(db.String(84), nullable=False)
-    price = db.Column(db.String(), nullable=False)
+    price = db.Column(db.String(20), nullable=False)
     length_img = db.Column(db.Integer)
     prompt_delivery_id = db.Column(
         db.Integer,
         db.ForeignKey('prompt_delivery.id')
+    )
+    imgs = db.relationship(
+        'ImgItem',
+        backref='item',
+        cascade="all,delete",
+        lazy='dynamic'
+    )
+
+
+class ImgItem(db.Model):
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    nameImg = db.Column(db.String(150), nullable=False)
+    item_id = db.Column(
+        db.Integer,
+        db.ForeignKey('item.id')
     )

@@ -7,7 +7,7 @@ UPLOAD_FOLDER='static/img'
 [development]
 RUN_DEBUG='True'
 RUN_USE_RELOADER='True'
-SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost/productapp'
 SQLALCHEMY_TRACK_MODIFICATIONS = false
 SWAGGER.title = 'FiCos API'
 FACEBOOK_OAUTH_CLIENT_ID = '213114076458972'

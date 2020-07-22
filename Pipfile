@@ -18,6 +18,8 @@ flask-migrate = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 flask-dance = {extras = ["sqla"],version = "*"}
+pymysql = "*"
+simplejson = "*"
 
 [dev-packages]
 flake8 = "*"

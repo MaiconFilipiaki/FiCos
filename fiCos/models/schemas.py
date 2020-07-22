@@ -9,17 +9,26 @@ class UserSchema(ma.Schema):
 user_share_schema = UserSchema()
 
 
-class ItemSchema(ma.Schema):
+class ImgItemSchema(ma.Schema):
     class Meta:
-        fields = 'id', 'description', 'price', 'length_img'
+        fields = 'id', 'nameImg'
+
+img_item_share_schema = ImgItemSchema()
+
+class ItemSchema(ma.Schema):
+    imgs = ma.Nested(ImgItemSchema, many=True)
+    class Meta:
+        fields = 'id', 'description', 'price', 'length_img', 'imgs'
 
 
 item_share_schema = ItemSchema()
+item_share_schemas = ItemSchema(many=True)
 
 
 class PromptDeliverySchema(ma.Schema):
     items = ma.Nested(ItemSchema, many=True)
-
+    latitude = ma.Decimal()
+    longitude = ma.Decimal()
     class Meta:
         fields = 'id', 'name', 'items', 'latitude', 'longitude', 'reach'
 
