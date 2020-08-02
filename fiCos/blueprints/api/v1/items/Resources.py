@@ -14,6 +14,8 @@ class ItemsResources(Resource):
     def post(self, current_user, id_prompt_delivery_id):
         description = request.json.get('description')
         price = request.json.get('price')
+        descriptionComplet = request.json.get('descriptionComplet')
+        categorie = request.json.get('categorie')
         findPromptDelivery = PromptDelivery.query.filter_by(
             id=id_prompt_delivery_id
             ).first()
@@ -28,7 +30,9 @@ class ItemsResources(Resource):
             )
         new_item = Item(
             description=description,
-            price=price
+            price=price,
+            descriptionComplet=descriptionComplet,
+            categorie=categorie
         )
         findPromptDelivery.items.append(new_item)
         db.session.add(new_item)
@@ -83,6 +87,8 @@ class ItemsResources(Resource):
         id = request.args.get('id')
         description = request.json.get('description')
         price = request.json.get('price')
+        descriptionComplet = request.json.get('descriptionComplet')
+        categorie = request.json.get('categorie')
         if description is None or price is None or id is None:
             return make_response(
                 jsonify({
@@ -98,6 +104,8 @@ class ItemsResources(Resource):
             )
         result.description = description
         result.price = price
+        result.descriptionComplet = descriptionComplet
+        result.categorie = categorie
         db.session.commit()
         result = item_share_schema.dump(
             Item.query.filter_by(id=id).first()

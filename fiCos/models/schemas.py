@@ -18,7 +18,7 @@ img_item_share_schema = ImgItemSchema()
 class ItemSchema(ma.Schema):
     imgs = ma.Nested(ImgItemSchema, many=True)
     class Meta:
-        fields = 'id', 'description', 'price', 'length_img', 'imgs'
+        fields = 'id', 'description', 'price', 'descriptionComplet', 'categorie', 'length_img', 'imgs'
 
 
 item_share_schema = ItemSchema()

@@ -58,6 +58,8 @@ class Item(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     description = db.Column(db.String(84), nullable=False)
     price = db.Column(db.String(20), nullable=False)
+    descriptionComplet = db.Column(db.Text)
+    categorie = db.Column(db.String(20))
     length_img = db.Column(db.Integer)
     prompt_delivery_id = db.Column(
         db.Integer,

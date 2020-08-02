@@ -28,4 +28,4 @@ class LoginResource(Resource):
         }
         token = jwt.encode(payload, current_app.config.get('SECRET_KEY'))
 
-        return jsonify({"token": token.decode('utf-8')})
+        return jsonify({"token": token.decode('utf-8'), "username": user.username})
